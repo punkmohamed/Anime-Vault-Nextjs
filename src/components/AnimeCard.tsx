@@ -47,6 +47,7 @@ export type AnimeProp = {
 interface Prop {
   anime: AnimeProp;
   index: number;
+  type: string
 }
 const variants = {
   hidden: {
@@ -56,10 +57,10 @@ const variants = {
     opacity: 1
   }
 }
-function AnimeCard({ anime, index }: Prop) {
+function AnimeCard({ anime, index, type }: Prop) {
 
   return (
-    <Link href={`/anime/${anime.mal_id}`}>
+    <Link href={`/${type}/${anime.mal_id}`}>
       <MotionDiv
         variants={variants}
         initial="hidden"

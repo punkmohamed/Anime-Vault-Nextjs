@@ -5,14 +5,14 @@ import HeaderContact from "./HeaderContact"
 const TopMovies = async () => {
     const response = await fetch('https://api.jikan.moe/v4/top/anime?type=movie&limit=8')
     const { data } = await response.json()
-
+    const type = 'movies'
     return (
         <div className="flex flex-col gap-4" >
             <HeaderContact title="Top Movies" />
             <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
                 {
                     data?.map((item: AnimeProp, index: number) => (
-                        <AnimeCard key={item.mal_id} anime={item} index={index} />
+                        <AnimeCard key={item.mal_id} anime={item} index={index} type={type} />
                     ))
                 }
             </section>

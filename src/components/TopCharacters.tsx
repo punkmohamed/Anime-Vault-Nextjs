@@ -27,7 +27,6 @@ interface ApiResponse {
         };
     };
 }
-
 const TopCharacters = async () => {
     const response = await fetch('https://api.jikan.moe/v4/top/characters?limit=10');
     const { data: characters }: ApiResponse = await response.json();

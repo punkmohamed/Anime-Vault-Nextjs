@@ -6,11 +6,10 @@ const AnimeNow = async () => {
 
     const response = await fetch('https://api.jikan.moe/v4/seasons/now?limit=4');
     const { data } = await response.json();
-
-    const news1 = data[0];
-    const news2 = data[1];
-    const news3 = data[2];
-    const news4 = data[3];
+    const news1 = data ? data[0] : [];
+    const news2 = data ? data[1] : [];
+    const news3 = data ? data[2] : [];
+    const news4 = data ? data[3] : [];
 
 
     return (

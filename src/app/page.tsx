@@ -11,15 +11,15 @@ import TopCharacters from "@/components/TopCharacters";
 
 import TableSkeleton from "@/components/TableSkeleton";
 import { Suspense } from "react";
-export const revalidate = 60
-const Home = () => {
-
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const Home = async () => {
+  await delay(1000)
   return (
     <>
       <Banner />
       <main className="sm:p-6 py-16 px-8 flex flex-col gap-10 bg-[#0F1117] relative  ">
-        <AnimeNow />
         <Suspense fallback={<TableSkeleton />}>
+          <AnimeNow />
           <NewestAnime />
           <UpComing />
           <TopAnime />

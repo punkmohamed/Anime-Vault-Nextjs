@@ -12,7 +12,8 @@ const config: Config = {
         main: "#0F1117",
         black2: '#040714',
         nav: '#161921',
-        bg: '#090b13'
+        bg: '#090b13',
+        404: '#ffdd95'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
