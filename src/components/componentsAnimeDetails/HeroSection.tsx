@@ -14,8 +14,8 @@ const HeroSection = ({ anime }: { anime: AnimeDetails }) => {
                 priority
             />
             <div className="absolute bottom-0 left-0 p-8 w-full max-w-7xl mx-auto">
-                <div className="flex items-start gap-8">
-                    <div className="hidden md:block relative w-48 h-72 rounded-lg overflow-hidden shadow-2xl">
+                <div className="flex flex-col md:flex-row items-start gap-8">
+                    <div className=" md:block relative w-48 h-72 rounded-lg overflow-hidden shadow-2xl">
                         <Image
                             src={anime?.images.jpg.large_image_url}
                             alt={anime?.title}

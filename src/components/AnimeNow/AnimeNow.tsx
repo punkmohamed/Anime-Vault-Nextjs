@@ -5,13 +5,14 @@ import HeaderContact from "../HeaderContact";
 const AnimeNow = async () => {
 
     const response = await fetch('https://api.jikan.moe/v4/seasons/now?limit=4');
+    if (!response.ok) throw new Error('Failed to fetch anime details');
     const { data } = await response.json();
     const news1 = data ? data[0] : [];
     const news2 = data ? data[1] : [];
     const news3 = data ? data[2] : [];
     const news4 = data ? data[3] : [];
 
-
+    if (!news1 && !news2 && !news3 && !news4) return <h1>something is wrong</h1>
     return (
         <>
             <HeaderContact title="Recent" />

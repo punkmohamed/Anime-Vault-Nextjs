@@ -12,7 +12,7 @@ const Characters = async ({ params }: { params: { id: string } }) => {
 
 
     const type = true
-
+    if (!characters) return <h1>somthing is wrong</h1>
     return (
         <>
             <CharactersSection characters={characters} id={params?.id} type={type} />

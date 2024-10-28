@@ -22,6 +22,7 @@ const ClientNav = ({ children }: { children: ReactNode }) => {
         };
     }, [isScrolled]);
 
+
     return (
         <nav className={`sticky top-0 ${isScrolled ? 'bg-nav' : 'bg-transparent '} text-white py-2 px-9 z-50 flex items-center justify-between transition-colors ease-out`}>
             <Image src="./logo.svg" className=" size-12 object-cover " width={40} height={40} alt="logo" />
@@ -32,7 +33,7 @@ const ClientNav = ({ children }: { children: ReactNode }) => {
             </button>
             <ul
                 className={`fixed  inset-0 bg-black text-white flex flex-col items-center justify-center gap-8 
-          transition-transform transform translate-x-full ${open && 'translate-x-0'} md:hidden z-40`}
+          transition-transform transform  ${open ? 'translate-x-0' : 'translate-x-full'} md:hidden z-40`}
             >
                 <button onClick={() => setOpen((prev) => !prev)} className="absolute top-5 right-5 cursor-pointer">
                     <X className="w-8 h-8 text-white" />

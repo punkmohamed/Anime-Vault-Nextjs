@@ -80,7 +80,7 @@ const AnimeDetail = async ({ params }: { params: { id: string } }) => {
     const anime: AnimeDetails = animeData.data;
     const characters: Character[] = charactersData.data;
     const recommendations: Recommendation[] = recommendationsData.data;
-
+    if (!anime && !characters && !recommendations) return <h1>somthing is wrong</h1>
     return (
         <div className="min-h-screen bg-[#0F1117] text-white pb-10">
             {/* Enhanced Hero Section */}
