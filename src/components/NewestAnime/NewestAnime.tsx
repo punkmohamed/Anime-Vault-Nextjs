@@ -6,6 +6,7 @@ const NewestAnime = async () => {
     if (!response.ok) throw new Error('Failed to fetch anime new');
     const { data } = await response.json()
     const type = 'anime'
+
     if (!data) return <h1>somthing is wrong</h1>
     return (
         <div className="flex flex-col gap-4" >
