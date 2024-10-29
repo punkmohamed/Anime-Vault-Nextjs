@@ -73,14 +73,15 @@ async function getAnimeRecommendations(id: string) {
     if (!res.ok) throw new Error('Failed to fetch recommendations');
     return res.json();
 }
-const MovieDetail = async ({ params }: { params: { id: string } }) => {
+const MovieDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
 
+    const id = (await params).id
 
 
     const [animeData, charactersData, recommendationsData] = await Promise.all([
-        getAnimeDetails(params.id),
-        getAnimeCharacters(params.id),
-        getAnimeRecommendations(params.id),
+        getAnimeDetails(id),
+        getAnimeCharacters(id),
+        getAnimeRecommendations(id),
     ]);
 
     const anime: AnimeDetails = animeData.data;
@@ -100,7 +101,7 @@ const MovieDetail = async ({ params }: { params: { id: string } }) => {
                         {/* Synopsis Section */}
                         <SynpsisSection synopsis={anime?.synopsis} />
                         {/* Characters Section */}
-                        <CharactersSection characters={characters} id={params?.id} />
+                        <CharactersSection characters={characters} id={id} />
                         {/* Episodes Section (if available) */}
                         <EpisodesSection episodes={anime?.episodes} duration={anime?.duration} />
                     </div>

@@ -6,8 +6,6 @@ const Navbar = () => {
         <ClientNav>
             <div className="flex items-center justify-end w-full ">
 
-
-
                 <ul
                     className="hidden md:flex gap-6 text-lg items-center"
                 >

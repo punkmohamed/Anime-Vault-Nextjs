@@ -90,6 +90,8 @@ const variants = {
   }
 }
 function AnimeCard({ anime, index, type }: Prop) {
+  const link = ``
+  console.log(link, "link data see -----------");
 
   return (
     <Link href={`/${type === "TV" ? 'anime' : type === "Movie" ? 'movies' : type === "OVA" ? 'ovas' : type === "specials" ? 'specials' : type.toLowerCase()}/${anime.mal_id}`}>
