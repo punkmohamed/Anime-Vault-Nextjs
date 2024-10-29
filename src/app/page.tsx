@@ -18,8 +18,9 @@ const fetchAnimeData = async (url: string) => {
   return data;
 };
 
-// Define the data-fetching functions
+// Define the data-fetching functions with delay
 const getAnimeNowData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/seasons/now?limit=4';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Anime Now');
@@ -27,6 +28,7 @@ const getAnimeNowData = async () => {
 };
 
 const getNewestAnimeData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/anime?filter=airing&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Newest Anime');
@@ -34,6 +36,7 @@ const getNewestAnimeData = async () => {
 };
 
 const getUpcomingAnimeData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/anime?filter=upcoming&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Upcoming Anime');
@@ -41,6 +44,7 @@ const getUpcomingAnimeData = async () => {
 };
 
 const getTopAnimeData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/anime?filter=bypopularity&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Top Anime');
@@ -48,6 +52,7 @@ const getTopAnimeData = async () => {
 };
 
 const getTopMoviesData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/anime?type=movie&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Top Movies');
@@ -55,6 +60,7 @@ const getTopMoviesData = async () => {
 };
 
 const getSpecialsData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/anime?type=special&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Specials');
@@ -62,6 +68,7 @@ const getSpecialsData = async () => {
 };
 
 const getTopOvasData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/anime?type=ova&limit=8';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Top OVAs');
@@ -69,6 +76,7 @@ const getTopOvasData = async () => {
 };
 
 const getTopCharactersData = async () => {
+  await delay(1000); // Delay before fetching
   const url = 'https://api.jikan.moe/v4/top/characters?limit=10';
   const data = await fetchAnimeData(url);
   if (!data || data.length === 0) throw new Error('No data found for Top Characters');
@@ -76,29 +84,18 @@ const getTopCharactersData = async () => {
 };
 const Home = async () => {
   try {
-    const animeNowData = await getAnimeNowData();
-    await delay(3000);
 
-    const newestAnimeData = await getNewestAnimeData();
-    await delay(3000);
+    const [animeNowData, newestAnimeData, upcomingAnimeData, topAnimeData, topMoviesData, specialsData, topOvasData, topCharactersData] = await Promise.all([
+      getAnimeNowData(),
+      getNewestAnimeData(),
+      getUpcomingAnimeData(),
+      getTopAnimeData(),
+      getTopMoviesData(),
+      getSpecialsData(),
+      getTopOvasData(),
+      getTopCharactersData(),
+    ]);
 
-    const upcomingAnimeData = await getUpcomingAnimeData();
-    await delay(3000);
-
-    const topAnimeData = await getTopAnimeData();
-    await delay(3000);
-
-    const topMoviesData = await getTopMoviesData();
-    await delay(3000);
-
-    const specialsData = await getSpecialsData();
-    await delay(3000);
-
-    const topOvasData = await getTopOvasData();
-    await delay(3000);
-
-    const topCharactersData = await getTopCharactersData();
-    await delay(3000);
     return (
       <>
         <Banner />
