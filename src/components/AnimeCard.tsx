@@ -90,12 +90,11 @@ const variants = {
   }
 }
 function AnimeCard({ anime, index, type }: Prop) {
-  // const link = ${type === "TV" ? 'anime' : type === "Movie" ? 'movies' : type === "OVA" ? 'ovas' : type === "specials" ? 'specials' : type.toLowerCase()}
-  console.log(type);
-  const id = anime.mal_id.toString()
+  const link = ``
+  console.log(link, "link data see -----------");
 
   return (
-    <Link href={`/anime/${id}`}>
+    <Link href={`/${type === "TV" ? 'anime' : type === "Movie" ? 'movies' : type === "OVA" ? 'ovas' : type === "specials" ? 'specials' : type.toLowerCase()}/${anime.mal_id}`}>
       <MotionDiv
         variants={variants}
         initial="hidden"
