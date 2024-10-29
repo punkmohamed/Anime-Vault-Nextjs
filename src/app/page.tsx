@@ -77,16 +77,16 @@ const getTopCharactersData = async () => {
 };
 const Home = async () => {
   const animeNowData = await getAnimeNowData();
-  await delay(500);
+  await delay(900);
 
   const newestAnimeData = await getNewestAnimeData();
-  await delay(500);
+  await delay(900);
 
   const upcomingAnimeData = await getUpcomingAnimeData();
-  await delay(500);
+  await delay(900);
 
   const topAnimeData = await getTopAnimeData();
-  await delay(500);
+  await delay(900);
 
   const topMoviesData = await getTopMoviesData();
   await delay(700);
