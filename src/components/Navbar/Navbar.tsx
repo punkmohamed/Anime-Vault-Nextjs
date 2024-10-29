@@ -4,7 +4,7 @@ import ClientNav from "./ClientNav";
 const Navbar = () => {
     return (
         <ClientNav>
-            <div className="flex items-center justify-end w-full">
+            <div className="flex items-center justify-end w-full ">
 
 
 
