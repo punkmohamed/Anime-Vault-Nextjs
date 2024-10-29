@@ -9,7 +9,6 @@ import TopOvas from "@/components/TopOvas";
 import Specials from "@/components/Specials";
 import TopCharacters from "@/components/TopCharacters";
 
-import TableSkeleton from "@/components/TableSkeleton";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const fetchAnimeData = async (url: string) => {
