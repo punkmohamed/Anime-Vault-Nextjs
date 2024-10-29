@@ -5,8 +5,8 @@ import NewestAnime from "@/components/NewestAnime/NewestAnime";
 import TopAnime from "@/components/TopAnime/TopAnime";
 import UpComing from "@/components/UpComing/UpComing";
 import TopMovies from "@/components/TopMovies";
-import TopOvas from "@/components/TopOvas";
-import Specials from "@/components/Specials";
+// import TopOvas from "@/components/TopOvas";
+// import Specials from "@/components/Specials";
 import TopCharacters from "@/components/TopCharacters";
 
 
@@ -59,21 +59,21 @@ const getTopMoviesData = async () => {
   return data;
 };
 
-const getSpecialsData = async () => {
-  await delay(3000); // Delay before fetching
-  const url = 'https://api.jikan.moe/v4/anime?type=special&limit=8';
-  const data = await fetchAnimeData(url);
-  if (!data || data.length === 0) throw new Error('No data found for Specials');
-  return data;
-};
+// const getSpecialsData = async () => {
+//   await delay(3000); // Delay before fetching
+//   const url = 'https://api.jikan.moe/v4/anime?type=special&limit=8';
+//   const data = await fetchAnimeData(url);
+//   if (!data || data.length === 0) throw new Error('No data found for Specials');
+//   return data;
+// };
 
-const getTopOvasData = async () => {
-  await delay(3000); // Delay before fetching
-  const url = 'https://api.jikan.moe/v4/top/anime?type=ova&limit=8';
-  const data = await fetchAnimeData(url);
-  if (!data || data.length === 0) throw new Error('No data found for Top OVAs');
-  return data;
-};
+// const getTopOvasData = async () => {
+//   await delay(3000); // Delay before fetching
+//   const url = 'https://api.jikan.moe/v4/top/anime?type=ova&limit=8';
+//   const data = await fetchAnimeData(url);
+//   if (!data || data.length === 0) throw new Error('No data found for Top OVAs');
+//   return data;
+// };
 
 const getTopCharactersData = async () => {
   await delay(3000); // Delay before fetching
@@ -85,14 +85,14 @@ const getTopCharactersData = async () => {
 const Home = async () => {
   try {
 
-    const [animeNowData, newestAnimeData, upcomingAnimeData, topAnimeData, topMoviesData, specialsData, topOvasData, topCharactersData] = await Promise.all([
+    const [animeNowData, newestAnimeData, upcomingAnimeData, topAnimeData, topMoviesData, topCharactersData] = await Promise.all([
       getAnimeNowData(),
       getNewestAnimeData(),
       getUpcomingAnimeData(),
       getTopAnimeData(),
       getTopMoviesData(),
-      getSpecialsData(),
-      getTopOvasData(),
+      // getSpecialsData(),
+      // getTopOvasData(),
       getTopCharactersData(),
     ]);
 
@@ -106,8 +106,8 @@ const Home = async () => {
           <UpComing data={upcomingAnimeData} />
           <TopAnime data={topAnimeData} />
           <TopMovies data={topMoviesData} />
-          <Specials data={specialsData} />
-          <TopOvas data={topOvasData} />
+          {/* <Specials data={specialsData} />
+          <TopOvas data={topOvasData} /> */}
           <TopCharacters characters={topCharactersData} />
 
         </main>
