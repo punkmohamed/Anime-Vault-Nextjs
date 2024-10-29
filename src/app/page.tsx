@@ -10,7 +10,7 @@ import Specials from "@/components/Specials";
 import TopCharacters from "@/components/TopCharacters";
 
 import TableSkeleton from "@/components/TableSkeleton";
-import { Suspense } from "react";
+
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const fetchAnimeData = async (url: string) => {
   const response = await fetch(url);
@@ -76,34 +76,35 @@ const getTopCharactersData = async () => {
   return data;
 };
 const Home = async () => {
-  const animeNowData = await getAnimeNowData();
-  await delay(900);
+  try {
+    const animeNowData = await getAnimeNowData();
+    await delay(900);
 
-  const newestAnimeData = await getNewestAnimeData();
-  await delay(900);
+    const newestAnimeData = await getNewestAnimeData();
+    await delay(900);
 
-  const upcomingAnimeData = await getUpcomingAnimeData();
-  await delay(900);
+    const upcomingAnimeData = await getUpcomingAnimeData();
+    await delay(900);
 
-  const topAnimeData = await getTopAnimeData();
-  await delay(900);
+    const topAnimeData = await getTopAnimeData();
+    await delay(900);
 
-  const topMoviesData = await getTopMoviesData();
-  await delay(700);
+    const topMoviesData = await getTopMoviesData();
+    await delay(700);
 
-  const specialsData = await getSpecialsData();
-  await delay(700);
+    const specialsData = await getSpecialsData();
+    await delay(700);
 
-  const topOvasData = await getTopOvasData();
-  await delay(900);
+    const topOvasData = await getTopOvasData();
+    await delay(900);
 
-  const topCharactersData = await getTopCharactersData();
-  await delay(900);
-  return (
-    <>
-      <Banner />
-      <main className="sm:p-6 py-16 px-8 flex flex-col gap-10 bg-[#0F1117] relative  ">
-        <Suspense fallback={<TableSkeleton />}>
+    const topCharactersData = await getTopCharactersData();
+    await delay(900);
+    return (
+      <>
+        <Banner />
+        <main className="sm:p-6 py-16 px-8 flex flex-col gap-10 bg-[#0F1117] relative">
+
           <AnimeNow data={animeNowData} />
           <NewestAnime data={newestAnimeData} />
           <UpComing data={upcomingAnimeData} />
@@ -112,9 +113,14 @@ const Home = async () => {
           <Specials data={specialsData} />
           <TopOvas data={topOvasData} />
           <TopCharacters characters={topCharactersData} />
-        </Suspense>
-      </main>
-    </>
-  );
+
+        </main>
+      </>
+    );
+  } catch (error) {
+    console.error("Home component error:", error);
+    return <div>Error loading data</div>; // Fallback UI on error
+  }
 }
+
 export default Home
