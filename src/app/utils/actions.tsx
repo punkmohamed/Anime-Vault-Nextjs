@@ -31,7 +31,7 @@ const fetchMovies = async (page: number) => {
     ))
 }
 const fetchOvas = async (page: number) => {
-    await delay(500)
+    await delay(700)
     const response = await fetch(`https://api.jikan.moe/v4/top/anime?type=ova&limit=8&page=${page}
 `)
     if (!response.ok) throw new Error('Failed to fetch anime new');
@@ -43,7 +43,7 @@ const fetchOvas = async (page: number) => {
     ))
 }
 const fetchSpecials = async (page: number) => {
-    await delay(500)
+    await delay(700)
     const response = await fetch(`https://api.jikan.moe/v4/top/anime?type=special&limit=8&page=${page}
 `)
     if (!response.ok) throw new Error('Failed to fetch anime new');
