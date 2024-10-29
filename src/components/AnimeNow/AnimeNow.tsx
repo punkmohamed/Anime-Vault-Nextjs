@@ -1,16 +1,67 @@
 import { Clock, SwordIcon } from "lucide-react";
 import Image from "next/image";
 import HeaderContact from "../HeaderContact";
+import { AnimeProp } from "../AnimeCard";
 
-const AnimeNow = async () => {
+const AnimeNow = async ({ data }: { data: AnimeProp[] }) => {
 
-    const response = await fetch('https://api.jikan.moe/v4/seasons/now?limit=4');
-    if (!response.ok) throw new Error('Failed to fetch anime details');
-    const { data } = await response.json();
-    const news1 = data ? data[0] : [];
-    const news2 = data ? data[1] : [];
-    const news3 = data ? data[2] : [];
-    const news4 = data ? data[3] : [];
+    const defaultAnime: AnimeProp = {
+        mal_id: 0,
+        title: "Default Title",
+        title_japanese: "デフォルトタイトル",
+        images: {
+            webp: {
+                large_image_url: '',
+                image_url: "",
+                small_image_url: ""
+            },
+            jpg: {
+                image_url: "",
+                small_image_url: "",
+                large_image_url: ""
+            }
+        },
+        type: "TV",
+        episodes: 0,
+        airing: false,
+        aired: { from: "", to: null },
+        duration: "",
+        genres: [],
+        studios: [],
+        synopsis: "",
+        popularity: 0,
+        score: 0,
+        scored_by: 0,
+        members: 0,
+        favorites: 0,
+        season: null,
+        year: null,
+        url: "",
+        approved: false,
+        titles: [],
+        title_english: "",
+        title_synonyms: [],
+        source: "",
+        status: "",
+        rating: "",
+        rank: 0,
+        background: "",
+        broadcast: {
+            day: "",
+            time: "",
+            timezone: "",
+            string: ""
+        },
+        explicit_genres: [],
+        themes: [],
+        demographics: []
+    };
+    const news1: AnimeProp = data && data[0] ? data[0] : defaultAnime;
+    const news2: AnimeProp = data && data[1] ? data[1] : defaultAnime;
+    const news3: AnimeProp = data && data[2] ? data[2] : defaultAnime;
+    const news4: AnimeProp = data && data[3] ? data[3] : defaultAnime;
+
+
 
     if (!news1 && !news2 && !news3 && !news4) return <h1>something is wrong</h1>
     return (

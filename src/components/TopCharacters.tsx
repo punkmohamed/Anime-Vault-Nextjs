@@ -1,37 +1,36 @@
 import React from 'react';
 import { Heart, Trophy } from 'lucide-react';
 import Image from 'next/image';
+// Define types for the images structure
+type ImageUrls = {
+    image_url: string;
+};
 
-// Define types for the API response
-interface Character {
+type Images = {
+    jpg: ImageUrls;
+    webp: {
+        image_url: string;
+        small_image_url: string;
+    };
+};
+
+// Define the structure for a character
+export type CharacterData = {
     mal_id: number;
+    url: string;
+    images: Images;
     name: string;
-    images: {
-        jpg: {
-            image_url: string;
-        };
-    };
+    name_kanji: string;
+    nicknames: string[];
     favorites: number;
-}
+    about: string;
+};
 
-interface ApiResponse {
-    data: Character[];
-    pagination: {
-        last_visible_page: number;
-        has_next_page: boolean;
-        current_page: number;
-        items: {
-            count: number;
-            total: number;
-            per_page: number;
-        };
-    };
-}
-const TopCharacters = async () => {
-    const response = await fetch('https://api.jikan.moe/v4/top/characters?limit=10');
-    if (!response.ok) throw new Error('Failed to fetch anime new');
-    const { data: characters }: ApiResponse = await response.json();
 
+
+
+
+const TopCharacters = async ({ characters }: { characters: CharacterData[] }) => {
 
     const getRankColor = (rank: number): string => {
         switch (rank) {
@@ -53,6 +52,7 @@ const TopCharacters = async () => {
         return <span className="text-purple-400 font-bold">#{rank}</span>;
     };
     if (!characters) return <h1>somthing is wrong</h1>
+
 
     return (
         <div className="min-h-screen bg-[#090b13] p-6">

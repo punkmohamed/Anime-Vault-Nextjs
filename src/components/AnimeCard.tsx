@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 type Genre = {
   mal_id: number;
+  type: string; // added to match the JSON structure
   name: string;
+  url: string; // added to match the JSON structure
 };
 
 type Studio = {
@@ -12,35 +14,65 @@ type Studio = {
 };
 
 type Images = {
-  jpg: { image_url: string };
-  webp: { image_url: string };
+  jpg: {
+    image_url: string;
+    small_image_url: string; // added to match the JSON structure
+    large_image_url: string; // added to match the JSON structure
+  };
+  webp: {
+    image_url: string;
+    small_image_url: string; // added to match the JSON structure
+    large_image_url: string; // added to match the JSON structure
+  };
 };
 
-type Aired = {
+type Broadcast = {
+  day: string;
+  time: string;
+  timezone: string;
+  string: string;
+};
+
+type AiredProp = {
   from: string;
   to: string | null;
 };
 
 export type AnimeProp = {
   mal_id: number;
-  title: string;
-  title_japanese: string;
+  url: string; // added to match the JSON structure
   images: Images;
+
+  approved: boolean;
+  titles: { type: string; title: string }[]; // array of titles
+  title: string;
+  title_english: string; // added to match the JSON structure
+  title_japanese: string;
+  title_synonyms: string[]; // added to match the JSON structure
   type: string;
+  source: string; // added to match the JSON structure
   episodes: number;
+  status: string; // added to match the JSON structure
   airing: boolean;
-  aired: Aired;
+  aired: AiredProp;
   duration: string;
-  genres: Genre[];
-  studios: Studio[];
-  synopsis: string;
-  popularity: number;
+  rating: string; // added to match the JSON structure
   score: number;
   scored_by: number;
+  rank: number; // added to match the JSON structure
+  popularity: number;
   members: number;
   favorites: number;
+  synopsis: string;
+  background: string; // added to match the JSON structure
   season: string | null;
   year: number | null;
+  broadcast: Broadcast; // added to match the JSON structure
+  studios: Studio[]; // array of studios
+  genres: Genre[]; // array of genres
+  explicit_genres: Genre[]; // array of explicit genres
+  themes: Genre[]; // array of themes
+  demographics: Genre[]; // array of demographics
 };
 
 

@@ -2,12 +2,11 @@ import AnimeCard, { AnimeProp } from "./AnimeCard"
 import HeaderContact from "./HeaderContact"
 
 
-const TopMovies = async () => {
-    const response = await fetch('https://api.jikan.moe/v4/top/anime?type=movie&limit=8')
-    if (!response.ok) throw new Error('Failed to fetch anime new');
-    const { data } = await response.json()
+const TopMovies = async ({ data }: { data: AnimeProp[] }) => {
+
     const type = 'movies'
     if (!data) return <h1>somthing is wrong</h1>
+
     return (
         <div className="flex flex-col gap-4" >
             <HeaderContact title="Top Movies" />
