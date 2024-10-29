@@ -9,7 +9,7 @@ import TopMovies from "@/components/TopMovies";
 // import Specials from "@/components/Specials";
 import TopCharacters from "@/components/TopCharacters";
 
-
+export const fetchCashe = "force-no-store"
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const fetchAnimeData = async (url: string) => {
   const response = await fetch(url);
