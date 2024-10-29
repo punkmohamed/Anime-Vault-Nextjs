@@ -77,28 +77,28 @@ const getTopCharactersData = async () => {
 const Home = async () => {
   try {
     const animeNowData = await getAnimeNowData();
-    await delay(500);
+    await delay(3000);
 
     const newestAnimeData = await getNewestAnimeData();
-    await delay(500);
+    await delay(3000);
 
     const upcomingAnimeData = await getUpcomingAnimeData();
-    await delay(500);
+    await delay(3000);
 
     const topAnimeData = await getTopAnimeData();
-    await delay(500);
+    await delay(3000);
 
     const topMoviesData = await getTopMoviesData();
-    await delay(700);
+    await delay(3000);
 
     const specialsData = await getSpecialsData();
-    await delay(700);
+    await delay(3000);
 
     const topOvasData = await getTopOvasData();
-    await delay(900);
+    await delay(3000);
 
     const topCharactersData = await getTopCharactersData();
-    await delay(900);
+    await delay(3000);
     return (
       <>
         <Banner />

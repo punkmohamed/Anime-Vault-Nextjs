@@ -5,7 +5,7 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 
 const fetchAnime = async (page: number) => {
-    await delay(500)
+    await delay(2000)
     const response = await fetch(`https://api.jikan.moe/v4/top/anime?limit=8&page=${page}&order_by=popularity
 `)
     if (!response.ok) throw new Error('Failed to fetch anime new');
@@ -19,7 +19,7 @@ const fetchAnime = async (page: number) => {
 }
 
 const fetchMovies = async (page: number) => {
-    await delay(500)
+    await delay(2000)
     const response = await fetch(`https://api.jikan.moe/v4/top/anime?type=movie&limit=8&page=${page}&order_by=popularity
 `)
     if (!response.ok) throw new Error('Failed to fetch anime new');
