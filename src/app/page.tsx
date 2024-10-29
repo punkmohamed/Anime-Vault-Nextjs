@@ -89,7 +89,7 @@ const Home = async () => {
   await delay(500);
 
   const topMoviesData = await getTopMoviesData();
-  await delay(500);
+  await delay(700);
 
   const specialsData = await getSpecialsData();
   await delay(700);
