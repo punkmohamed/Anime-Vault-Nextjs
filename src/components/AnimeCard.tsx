@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MotionDiv } from "./MotionDiv";
+// import { MotionDiv } from "./MotionDiv";
 import Link from "next/link";
 type Genre = {
   mal_id: number;
@@ -49,30 +49,32 @@ interface Prop {
   index: number;
   type: string
 }
-const variants = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1
-  }
-}
+// const variants = {
+//   hidden: {
+//     opacity: 0
+//   },
+//   show: {
+//     opacity: 1
+//   }
+// }
 function AnimeCard({ anime, index, type }: Prop) {
+  const index1 = index
+  console.log(index1);
 
   return (
     <Link href={`/${type}/${anime.mal_id}`}>
-      <MotionDiv
-        variants={variants}
-        initial="hidden"
-        animate="show"
-        transition={
-          {
-            delay: index * 0.25,
-            ease: "easeInOut",
-            duration: 0.5
-          }
-        }
-        viewport={{ amount: 0 }}
+      <div
+        // variants={variants}
+        // initial="hidden"
+        // animate="show"
+        // transition={
+        //   {
+        //     delay: index * 0.25,
+        //     ease: "easeInOut",
+        //     duration: 0.5
+        //   }
+        // }
+        // viewport={{ amount: 0 }}
         className="relative w-full h-[300px] xl:w-full xl:h-[360px] rounded-lg shadow-lg group overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
         <div className="absolute inset-0">
           <Image
@@ -98,7 +100,7 @@ function AnimeCard({ anime, index, type }: Prop) {
             {anime.synopsis}
           </p>
         </div>
-      </MotionDiv>
+      </div>
     </Link>
   );
 }

@@ -4,8 +4,10 @@ import AnimeCard, { AnimeProp } from "../AnimeCard"
 
 const TopAnime = async () => {
     const response = await fetch('https://api.jikan.moe/v4/top/anime?filter=bypopularity&limit=8')
+    if (!response.ok) throw new Error('Failed to fetch anime new');
     const { data } = await response.json()
     const type = 'anime'
+    if (!data) return <h1>somthing is wrong</h1>
     return (
         <div className="flex flex-col gap-5">
             <HeaderContact title="Top Anime" />

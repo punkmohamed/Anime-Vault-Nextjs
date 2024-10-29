@@ -3,8 +3,10 @@ import HeaderContact from "../HeaderContact"
 
 const NewestAnime = async () => {
     const response = await fetch('https://api.jikan.moe/v4/top/anime?filter=airing&limit=8')
+    if (!response.ok) throw new Error('Failed to fetch anime new');
     const { data } = await response.json()
     const type = 'anime'
+    if (!data) return <h1>somthing is wrong</h1>
     return (
         <div className="flex flex-col gap-4" >
             <HeaderContact title="New Episode" />

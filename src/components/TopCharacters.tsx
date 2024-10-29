@@ -29,8 +29,8 @@ interface ApiResponse {
 }
 const TopCharacters = async () => {
     const response = await fetch('https://api.jikan.moe/v4/top/characters?limit=10');
+    if (!response.ok) throw new Error('Failed to fetch anime new');
     const { data: characters }: ApiResponse = await response.json();
-
 
 
     const getRankColor = (rank: number): string => {
@@ -52,6 +52,7 @@ const TopCharacters = async () => {
         }
         return <span className="text-purple-400 font-bold">#{rank}</span>;
     };
+    if (!characters) return <h1>somthing is wrong</h1>
 
     return (
         <div className="min-h-screen bg-[#090b13] p-6">
