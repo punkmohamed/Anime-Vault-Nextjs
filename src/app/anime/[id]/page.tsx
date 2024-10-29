@@ -6,6 +6,7 @@ import CharactersSection from '@/components/componentsAnimeDetails/CharactersSec
 import EpisodesSection from '@/components/componentsAnimeDetails/EpisodesSection';
 import SideSection from '@/components/componentsAnimeDetails/SideSection';
 
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export interface AnimeDetails {
     title: string;
@@ -53,18 +54,21 @@ export interface Recommendation {
 
 
 async function getAnimeDetails(id: string) {
+    await delay(500);
     const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
     if (!res.ok) throw new Error('Failed to fetch anime details');
     return res.json();
 }
 
 async function getAnimeCharacters(id: string) {
+    await delay(500);
     const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
     if (!res.ok) throw new Error('Failed to fetch characters');
     return res.json();
 }
 
 async function getAnimeRecommendations(id: string) {
+    await delay(500);
     const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/recommendations`);
     if (!res.ok) throw new Error('Failed to fetch recommendations');
     return res.json();
