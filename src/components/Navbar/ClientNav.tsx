@@ -29,7 +29,7 @@ const ClientNav = ({ children }: { children: ReactNode }) => {
         <nav className={`sticky top-0 ${isScrolled ? 'bg-nav' : 'bg-transparent '} text-white py-2 px-9 z-50 flex items-center justify-between transition-colors ease-out`}>
             <Image src="./logo.svg" className=" size-12 object-cover " width={40} height={40} alt="logo" />
 
-            <div className="flex gap-2 w-32">
+            <div className="flex gap-2 w-[60rem]">
                 <Form action="/search" className="md:hidden mb-1 mx-3 mt-2 relative w-full">
                     <input name="query" placeholder="Search anime..." className="w-full bg-gray-800 text-white rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" />
                 </Form>
