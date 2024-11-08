@@ -20,6 +20,12 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Anime Vault",
   description: "Your favorite anime, all in one place.",
+  other: {
+    "og:url": "https://anime-vault-nextjs-ten.vercel.app",
+    "og:image": "https://www.toei-animation.com/wp-content/uploads/2019/02/one_piece_product.jpg",
+    "og:type": "website",
+
+  }
 };
 
 export default function RootLayout({
